@@ -10,9 +10,10 @@ A type-erased growable array. You pick the element type at initialization via `i
 
 | Function | Description |
 |----------|-------------|
-| `init_vec(initial_size, item_size)` | Allocate a vector with room for `initial_size` elements |
-| `delete_vec(vec)` | Free the backing storage |
+| `vec_init(initial_size, item_size)` | Allocate a vector with room for `initial_size` elements |
+| `vec_delete(vec)` | Free the backing storage |
 | `vec_resize(vec, new_size)` | Grow capacity to `new_size` (no-op if already large enough) |
+| `vec_clone(dest, orig)` | Clone a vector origin vector to a destiny vector |
 | `vec_set(vec, index, item)` | Copy an element into a slot |
 | `vec_add(vec, item)` | Append an element, resizing if needed |
 | `vec_insert(vec, index, item)` | Insert at `index`, shifting later elements right |
