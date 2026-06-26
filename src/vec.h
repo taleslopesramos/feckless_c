@@ -16,9 +16,10 @@ typedef struct Vec
     size_t length;
 } Vec;
 
-Vec init_vec(size_t initial_size, size_t item_size);
-void delete_vec(Vec *vec);
+Vec vec_init(size_t initial_size, size_t item_size);
+void vec_delete(Vec *vec);
 bool vec_resize(Vec *vec, size_t new_size);
+void vec_clone(Vec *dest, Vec *orig);
 
 bool vec_set(Vec *vec, size_t index, void* item);
 bool vec_add(Vec *vec, void* item);

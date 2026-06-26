@@ -2,7 +2,7 @@
 #include "vec.h"
 #include <stdlib.h>
 
-Vec init_vec(size_t initial_size, size_t item_size)
+Vec vec_init(size_t initial_size, size_t item_size)
 {
     void *data = (void *)malloc(initial_size * item_size);
 
@@ -22,7 +22,7 @@ Vec init_vec(size_t initial_size, size_t item_size)
         .length = 0};
 }
 
-void delete_vec(Vec *vec)
+void vec_delete(Vec *vec)
 {
     free(vec->data);
 }
@@ -38,6 +38,14 @@ bool vec_resize(Vec *vec, size_t new_size)
 
     vec->total_size = new_size;
     return true;
+}
+
+void vec_clone(Vec *dest, Vec *orig)
+{
+    memcpy(dest->data, orig->data, orig->item_size*orig->total_size);
+    dest->item_size = orig->item_size;
+    dest->length = orig->length;
+    dest->total_size = orig->total_size;
 }
 
 bool vec_if_full_double_size(Vec *vec)
