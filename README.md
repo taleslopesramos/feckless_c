@@ -2,7 +2,7 @@
 
 A minimal library with some half-assed utilities for C.
 
-Right now the only module is a generic dynamic array (`Vec`).
+Modules: a generic dynamic array (`Vec`) and a doubly linked list (`LL`).
 
 ## Vec
 
@@ -33,10 +33,39 @@ int first = VEC_AT_AS(&v, int, 0);  // 42
 delete_vec(&v);
 ```
 
+## LL
+
+A type-erased doubly linked list. Each node stores a copy of the bytes you pass in (`item_size` + `data`). Elements are indexed from `0` at the head.
+
+| Function | Description |
+|----------|-------------|
+| `ll_init()` | Create an empty list (`head`, `tail`, `length`) |
+| `ll_delete(ll)` | Free all nodes and their data |
+| `ll_clone(dest, orig)` | Deep-copy `orig` into `dest` |
+| `ll_push(ll, item_size, item)` | Append a copy at the tail |
+| `ll_shift(ll, item_size, item)` | Prepend a copy at the head |
+| `ll_get_at(ll, index)` | Pointer to the node at `index`, or `NULL` |
+| `ll_remove_at(ll, index)` | Remove the node at `index`; returns `true` on success |
+| `ll_for_each(ll, func)` | Call `func(node, index)` for each node, head to tail |
+
+```c
+#include "ll.h"
+
+LL list = ll_init();
+
+ll_push(&list, sizeof(int), &(int){42});
+ll_push(&list, sizeof(int), &(int){99});
+
+int value = *(int *)ll_get_at(&list, 0)->data;  // 42
+
+ll_remove_at(&list, 0);
+ll_delete(&list);
+```
+
 ## Project layout
 
 ```
-src/          Library source (vec.c, vec.h)
+src/          Library source (vec.c, vec.h, ll.c, ll.h)
 tests/        Criterion test suites
 build/        Compiled objects and test binary (generated)
 Makefile      Build and test targets

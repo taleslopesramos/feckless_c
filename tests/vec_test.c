@@ -1,4 +1,4 @@
-// tests/test_vec.c
+// tests/vec_test.c
 #include <criterion/criterion.h>
 #include "../src/vec.h"
 
