@@ -117,7 +117,7 @@ void ll_for_each(LL *linked_list, void func(Node *item, size_t index))
     }
 }
 
-Node *ll_get_at(LL *linked_list, size_t at)
+Node *ll_at(LL *linked_list, size_t at)
 {
     if (at >= linked_list->length || linked_list->head == NULL)
     {
@@ -137,7 +137,7 @@ Node *ll_get_at(LL *linked_list, size_t at)
 
 bool ll_remove_at(LL *linked_list, size_t at)
 {
-    Node *elem = ll_get_at(linked_list, at);
+    Node *elem = ll_at(linked_list, at);
     if (elem == NULL)
     {
         return false;

@@ -200,11 +200,11 @@ Test(ll, clone)
     ll_clone(&ll2, &ll1);
 
     cr_assert_neq(ll2.head->data, ll1.head->data);
-    cr_assert_neq(ll_get_at(&ll2, 1)->data, ll_get_at(&ll1, 1)->data);
+    cr_assert_neq(ll_at(&ll2, 1)->data, ll_at(&ll1, 1)->data);
     cr_assert_neq(ll2.tail->data, ll1.tail->data);
 
     cr_assert_eq((*(int *)ll2.head->data), (*(int *)ll1.head->data));
-    cr_assert_eq((*(int *)ll_get_at(&ll2, 1)->data), (*(int *)ll_get_at(&ll1, 1)->data));
+    cr_assert_eq((*(int *)ll_at(&ll2, 1)->data), (*(int *)ll_at(&ll1, 1)->data));
     cr_assert_eq((*(int *)ll2.tail->data), (*(int *)ll1.tail->data));
 
     ll_delete(&ll1);

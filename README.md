@@ -44,7 +44,7 @@ A type-erased doubly linked list. Each node stores a copy of the bytes you pass 
 | `ll_clone(dest, orig)` | Deep-copy `orig` into `dest` |
 | `ll_push(ll, item_size, item)` | Append a copy at the tail |
 | `ll_shift(ll, item_size, item)` | Prepend a copy at the head |
-| `ll_get_at(ll, index)` | Pointer to the node at `index`, or `NULL` |
+| `ll_at(ll, index)` | Pointer to the node at `index`, or `NULL` |
 | `ll_remove_at(ll, index)` | Remove the node at `index`; returns `true` on success |
 | `ll_for_each(ll, func)` | Call `func(node, index)` for each node, head to tail |
 

@@ -29,7 +29,7 @@ void ll_shift(LL *linked_list, size_t item_size, void *item);
 
 void ll_for_each(LL *linked_list, void func(Node *item, size_t index));
 
-Node *ll_get_at(LL *linked_list, size_t at);
+Node *ll_at(LL *linked_list, size_t at);
 bool ll_remove_at(LL *linked_list, size_t at);
 
 
